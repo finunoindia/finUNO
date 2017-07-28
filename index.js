@@ -128,7 +128,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             }
             break;
             
-        case "holdings_scrip_specific" : //case statement--------------------------------------------
+        case "holdings_scrip_specific" : // holdings scrip specific intent--------------------------------------------
             
             var scripnames = req.body.result.parameters.scripnames;
             var shares = req.body.result.parameters.shares;
