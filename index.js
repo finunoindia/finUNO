@@ -20,7 +20,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
     
     switch(action) {
             
-        case "trade_happening" : //trade screen------------------------------------------------
+        case "trade_happening" : //trade intent------------------------------------------------
             
             var buy_sell = req.body.result.parameters.buy_sell;
             var exchange = req.body.result.parameters.exchange;
@@ -136,8 +136,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             inputText = inputText.replace(shares.toUpperCase() , "");
             inputText = inputText.replace("HOLDINGS" , "");
             inputText = inputText.replace("HOLDING" , "");
-           
-            for(var i=0 ; i < scrips.length ; i++){
+               
+            for(var i=0 ; i < scrips.length ; i++){                          //checking if scrip name is valid              
                 if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
                     var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
                     if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || inputText.endsWith(scrips[i].FIELD1))){
@@ -165,11 +165,11 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                    });    
                     }
                 }
-                if((inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1){
+                if((inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1){   //checking iif scrip name is valid
                     var j = (inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase());
                     if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD2).length] === " " || inputText.endsWith(scrips[i].FIELD2))){
                     scripnames = scrips[i].FIELD1;
-                    return res.json({
+                    return res.json({                           // returning final output with followupEvent 
                        contextOut : [{
                            name : "holdings_-_scrip_specific_dialog_params_scripnames",
                            lifespan : 0
@@ -206,14 +206,14 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             exchange_possibilities = exchange_possibilities.concat(exchange);
             exchange_possibilities = exchange_possibilities.concat(". Please choose from the following :");
             inputText = inputText.toUpperCase();
-            inputText = inputText.replace(alert_if.toUpperCase() , "");
-            inputText = inputText.replace(less_than_greater_than.toUpperCase() , "");
+            inputText = inputText.replace(alert_if.toUpperCase() , "");                 //replacing some keywords from the search string
+            inputText = inputText.replace(less_than_greater_than.toUpperCase() , "");   //to minimise the search 
             inputText = inputText.replace(exchange.toUpperCase() , "");
             inputText = inputText.replace(value.toUpperCase() , "");
             inputText = inputText.replace("ALERT ME" , "");
             inputText = inputText.replace("ALERT" , "");
         
-            for(var i=0 ; i < scrips.length ; i++){
+            for(var i=0 ; i < scrips.length ; i++){                             // checking if scrip name is valid
                 if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
                     var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
                     if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || inputText.endsWith(scrips[i].FIELD1)))
@@ -225,7 +225,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     scripnames = scrips[i].FIELD1;
                 }
             }  
-            if(exchange === "" || buy_sell === "" || quantity === "")
+            if(exchange === "" || alert_if === "" || less_than_greater_than === "" || value === "")
                 return res.json({
                     contextOut : [{
                         name : "market_alert_contextout",
