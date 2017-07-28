@@ -1,11 +1,11 @@
 'use strict';
 
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require('express');                                // Used to access express
+const bodyParser = require('body-parser');                         // Ussed too access the body-parser
 
 const restService = express();
 
-restService.use(bodyParser.urlencoded({
+restService.use(bodyParser.urlencoded({                           
     extended: true
 }));
 
@@ -13,14 +13,14 @@ restService.use(bodyParser.urlencoded({
 
 restService.use(bodyParser.json());
 
-restService.post('/finUNO', function(req, res) {
-    var scrips = require("./EQUITY_L.json");
+restService.post('/finUNO', function(req, res) {                    // Uses post() to get data fro appi.ai in json format
+    var scrips = require("./EQUITY_L.json");                        // gets data from the scrip list
     var inputText= req.body.result.resolvedQuery;
-    var action = req.body.result.action;
+    var action = req.body.result.action;                            // reads action field from json to use in swicth case 
     
     switch(action) {
             
-        case "trade_happening" : //case statement-----------------------------------------------------
+        case "trade_happening" : //trade screen------------------------------------------------
             
             var buy_sell = req.body.result.parameters.buy_sell;
             var exchange = req.body.result.parameters.exchange;
@@ -42,15 +42,8 @@ restService.post('/finUNO', function(req, res) {
             inputText = inputText.replace(shares.toUpperCase() , "");
             inputText = inputText.replace(validity.toUpperCase() , "");
             inputText = inputText.replace("TRADE" , "");
-           /* do{
-                var temp = inputText;
-                inputText = inputText.replace(" ","");
-            }while(temp!==inputText); */
-    /*        for(var i=0 ; i < scrips.length ; i++){
-                if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1 || (inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1)
-                    scripnames = scrips[i].FIELD1;
-            }*/
-            for(var i=0 ; i < scrips.length ; i++){
+          
+            for(var i=0 ; i < scrips.length ; i++){                   // Checks for scrip validity
                 if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
                     var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
                     if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || inputText.endsWith(scrips[i].FIELD1)))
@@ -62,7 +55,7 @@ restService.post('/finUNO', function(req, res) {
                     scripnames = scrips[i].FIELD1;
                 }
             }  
-            if(exchange === "" || buy_sell === "" || quantity === "")
+            if(exchange === "" || buy_sell === "" || quantity === "")            //checks if all reqquired fields have been filled yet
                 return res.json({
                     contextOut : [{
                         name : "tradecontextout",
@@ -72,7 +65,7 @@ restService.post('/finUNO', function(req, res) {
                     }]
                 });            
             var exchange_scrip_match = 0;
-            if(exchange !== "" && scripnames !== ""){
+            if(exchange !== "" && scripnames !== ""){                      // checks if scripname matches the exchange name
                 for(var i=0 ; i < scrips.length ; i++){
                     if(scripnames === scrips[i].FIELD1){
                         exchange_possibilities = exchange_possibilities.concat(" ");
@@ -84,7 +77,7 @@ restService.post('/finUNO', function(req, res) {
                     }
                 }
             }
-            if(exchange_scrip_match === 0 && scripnames !== "")
+            if(exchange_scrip_match === 0 && scripnames !== "")          
                 return res.json({
                     contextOut : [{
                         name : "tradecontextout",
@@ -97,7 +90,7 @@ restService.post('/finUNO', function(req, res) {
                 });
             if(scripnames !== "" && exchange !== "" && buy_sell !== "" && quantity !== ""){
                 
-                return res.json({
+                return res.json({                                                     // returns final output by calling followupEvent 
                     contextOut : [{
                         name : "trade_dialog_context",
                         lifespan : 0
