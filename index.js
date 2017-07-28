@@ -500,7 +500,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                         }
                     }
                 }
-            }then returning appropriate response
+            }
             if(exchange_scrip_match === 0 && scripnames !== "")    //if exchange doesn't match then returning appropriate response
                 return res.json({
                     contextOut : [{
