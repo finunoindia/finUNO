@@ -1,1 +1,1 @@
-# finUNO
+Webhook for financial assistant bot

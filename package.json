@@ -1,0 +1,14 @@
+{
+  "name": "finUNO",
+  "version": "1.0.0",
+  "description": "Webhook for financial assistant chatbot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Aditya Gupta",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4"
+  }
+}
