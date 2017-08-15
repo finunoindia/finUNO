@@ -24,8 +24,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             
             var transactionType = req.body.result.parameters.transactionType;
             var exchange = req.body.result.parameters.exchange;
-            var price_type = req.body.result.parameters.price_type;
-            var product_type = req.body.result.parameters.product_type;
+            var priceType = req.body.result.parameters.priceType;
+            var productType = req.body.result.parameters.productType;
             var quantity = req.body.result.parameters.quantity;
             var shares = req.body.result.parameters.shares;
             var validity = req.body.result.parameters.validity;
@@ -36,8 +36,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             inputText = inputText.toUpperCase();
             inputText = inputText.replace(transactionType.toUpperCase() , "");
             inputText = inputText.replace(exchange.toUpperCase() , "");
-            inputText = inputText.replace(price_type.toUpperCase() , "");
-            inputText = inputText.replace(product_type.toUpperCase() , "");
+            inputText = inputText.replace(priceType.toUpperCase() , "");
+            inputText = inputText.replace(productType.toUpperCase() , "");
             inputText = inputText.replace(quantity.toUpperCase() , "");
             inputText = inputText.replace(shares.toUpperCase() , "");
             inputText = inputText.replace(validity.toUpperCase() , "");
@@ -117,8 +117,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                             exchange : exchange,
                             quantity : quantity,
                             scripnames : scripnames,
-                            price_type : price_type,
-                            product_type : product_type,
+                            priceType : priceType,
+                            productType : productType,
                             validity : validity,
                             shares : shares
                         },
