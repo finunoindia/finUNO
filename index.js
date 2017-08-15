@@ -22,7 +22,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             
         case "trade_happening" : //trade intent------------------------------------------------
             
-            var buy_sell = req.body.result.parameters.buy_sell;
+            var transactionType = req.body.result.parameters.transactionType;
             var exchange = req.body.result.parameters.exchange;
             var price_type = req.body.result.parameters.price_type;
             var product_type = req.body.result.parameters.product_type;
@@ -34,7 +34,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             exchange_possibilities = exchange_possibilities.concat(exchange);
             exchange_possibilities = exchange_possibilities.concat(". Please choose from the following :");
             inputText = inputText.toUpperCase();
-            inputText = inputText.replace(buy_sell.toUpperCase() , "");
+            inputText = inputText.replace(transactionType.toUpperCase() , "");
             inputText = inputText.replace(exchange.toUpperCase() , "");
             inputText = inputText.replace(price_type.toUpperCase() , "");
             inputText = inputText.replace(product_type.toUpperCase() , "");
@@ -55,7 +55,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     scripnames = scrips[i].FIELD1;
                 }
             }  
-            if(exchange === "" || buy_sell === "" || quantity === "")            //checks if all reqquired fields have been filled yet
+            if(exchange === "" || transactionType === "" || quantity === "")            //checks if all reqquired fields have been filled yet
                 return res.json({
                     contextOut : [{
                         name : "tradecontextout",
@@ -88,7 +88,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     speech : exchange_possibilities,
                     displayText : exchange_possibilities
                 });
-            if(scripnames !== "" && exchange !== "" && buy_sell !== "" && quantity !== ""){
+            if(scripnames !== "" && exchange !== "" && transactionType !== "" && quantity !== ""){
                 
                 return res.json({                                                     // returns final output by calling followupEvent 
                     contextOut : [{
@@ -113,7 +113,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     }],
                     followupEvent : {
                         data : {
-                            buy_sell : buy_sell,
+                            transactionType : transactionType,
                             exchange : exchange,
                             quantity : quantity,
                             scripnames : scripnames,
