@@ -20,7 +20,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
     
     switch(action) {
             
-        case "TradeAction" : //trade intent------------------------------------------------
+        case "tradeAction" : //trade intent------------------------------------------------
             
             var transactionType = req.body.result.parameters.transactionType;
             var exchange = req.body.result.parameters.exchange;
