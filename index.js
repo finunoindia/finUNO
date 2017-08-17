@@ -9,12 +9,12 @@ restService.use(bodyParser.urlencoded({
     extended: true
 }));
 
-//var scrips = require("./EQUITY_L.json");
+//var scrips = require("./Equity-final.json");
 
 restService.use(bodyParser.json());
 
 restService.post('/finUNO', function(req, res) {                    // Uses post() to get data fro appi.ai in json format
-    var scrips = require("./EQUITY_L.json");                        // gets data from the scrip list
+    var scrips = require("./Equity-final.json");                        // gets data from the scrip list
     var inputText= req.body.result.resolvedQuery;
     var action = req.body.result.action;                            // reads action field from json to use in swicth case 
     
@@ -47,12 +47,17 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                 if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
                     var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
                     if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || inputText.endsWith(scrips[i].FIELD1)))
-                    scripnames = scrips[i].FIELD1;
+                    scripnames = scrips[i].FIELD3;
                 }
                 if((inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase());
                         if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD2).length] === " " || inputText.endsWith(scrips[i].FIELD2)))
-                    scripnames = scrips[i].FIELD1;
+                    scripnames = scrips[i].FIELD3;
+                }
+                if((inputText.toLowerCase()).search((scrips[i].FIELD3).toLowerCase()) !== -1){
+                    var j = (inputText.toLowerCase()).search((scrips[i].FIELD3).toLowerCase());
+                    if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD3).length] === " " || inputText.endsWith(scrips[i].FIELD3)))
+                    scripnames = scrips[i].FIELD3;
                 }
             }  
             if(exchange === "" || transactionType === "" || quantity === "")            //checks if all reqquired fields have been filled yet
@@ -67,10 +72,10 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             var exchange_scrip_match = 0;
             if(exchange !== "" && scripnames !== ""){                      // checks if scripname matches the exchange name
                 for(var i=0 ; i < scrips.length ; i++){
-                    if(scripnames === scrips[i].FIELD1){
+                    if(scripnames === scrips[i].FIELD3){
                         exchange_possibilities = exchange_possibilities.concat(" ");
-                        exchange_possibilities = exchange_possibilities.concat(scrips[i].FIELD3);
-                        if((exchange.toUpperCase()) === scrips[i].FIELD3){
+                        exchange_possibilities = exchange_possibilities.concat(scrips[i].FIELD4);
+                        if((exchange.toUpperCase()) === scrips[i].FIELD4){
                             exchange_scrip_match = 1;
                             break;
                         }
