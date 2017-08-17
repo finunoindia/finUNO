@@ -1,1 +1,1 @@
-Webhook for financial assistant bot - testing
+Webhook for financial assistant bot
