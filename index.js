@@ -451,7 +451,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             });
             break;
             
-        case "quotesAction" : //case statement------------------------------------------------
+        case "quoteAction" : //case statement------------------------------------------------
            
             var chart_type = req.body.result.parameters.chart_type;
             var exchange = req.body.result.parameters.exchange;
