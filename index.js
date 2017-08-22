@@ -476,13 +476,19 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                 if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
                     var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
                     if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || inputText.endsWith(scrips[i].FIELD1)))
-                    scripnames = scrips[i].FIELD1;
+                    scripnames = scrips[i].FIELD3;
                 }
                 if((inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase());
                         if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD2).length] === " " || inputText.endsWith(scrips[i].FIELD2)))
-                    scripnames = scrips[i].FIELD1;
+                    scripnames = scrips[i].FIELD3;
+                } 
+                if((inputText.toLowerCase()).search((scrips[i].FIELD3).toLowerCase()) !== -1){
+                        var j = (inputText.toLowerCase()).search((scrips[i].FIELD3).toLowerCase());
+                        if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD3).length] === " " || inputText.endsWith(scrips[i].FIELD3)))
+                    scripnames = scrips[i].FIELD3;
                 }
+                
             }  
             if(exchange === "")
                 return res.json({
