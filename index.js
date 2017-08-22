@@ -498,14 +498,16 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                             scripnames : scripnames
                         }
                     }]
-                });            
+                });  
+           
+            
             var exchange_scrip_match = 0;                              //checking if exchange name matches
             if(exchange !== "" && scripnames !== ""){
                 for(var i=0 ; i < scrips.length ; i++){
-                    if(scripnames === scrips[i].FIELD1){
+                    if(scripnames === scrips[i].FIELD3){
                         exchange_possibilities = exchange_possibilities.concat(" ");
-                        exchange_possibilities = exchange_possibilities.concat(scrips[i].FIELD3);
-                        if((exchange.toUpperCase()) === scrips[i].FIELD3){
+                        exchange_possibilities = exchange_possibilities.concat(scrips[i].FIELD4);
+                        if((exchange.toUpperCase()) === scrips[i].FIELD4){
                             exchange_scrip_match = 1;
                             break;
                         }
