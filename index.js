@@ -14,7 +14,7 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.post('/finUNO', function(req, res) {                    // Uses post() to get data fro appi.ai in json format
-    var scrips = require("./Equity_final.json");                        // gets data from the scrip list
+    var scrips = require("./NSE_scrips.json");                        // gets data from the scrip list
     var inputText= req.body.result.resolvedQuery;
     var action = req.body.result.action;                            // reads action field from json to use in swicth case 
     
