@@ -53,7 +53,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                 }
                 var scripwords = (scrips[i].FIELD1).split(" ");
                 for(var k = 0 ; k < (scripwords.length - 1) ; k++){
-                    if((inputText.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] != ""){
+                    if((inputText.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] !== ""){
                        var j = (inputText.toLowerCase()).search((scripwords[k]).toLowerCase());
                        if((inputText[j-1] === " " || j === 0) && (inputText[j + (scripwords[k]).length] === " " || inputText.endsWith(scripwords[k])))
                        scripnames = scrips[i].FIELD3;
