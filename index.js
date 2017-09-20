@@ -51,14 +51,21 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     break;
                     }
                 }
-                var scripwords = (scrips[i].FIELD1).split(" ");
+                /*var scripwords = (scrips[i].FIELD1).split(" ");
                 for(var k = 0 ; k < (scripwords.length - 1) ; k++){
                     if((inputText.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] !== ""){
                        var j = (inputText.toLowerCase()).search((scripwords[k]).toLowerCase());
                        if((inputText[j-1] === " " || j === 0) && (inputText[j + (scripwords[k]).length] === " " || inputText.endsWith(scripwords[k])))
                        scripnames = scrips[i].FIELD3;
                        }
-                }
+                }*/
+                var scripwords = inputText.split(" ");
+                for(var k = 0 ; k < scripwords.length ; k++){
+                    if((inputText.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] !== ""){
+                       var j = ((scrips[i].FIELD1).toLowerCase()).search((scripwords[k]).toLowerCase());
+                       if((inputText[j-1] === " " || j === 0) && (inputText[j + (scripwords[k]).length] === " " || inputText.endsWith(scripwords[k])))
+                       scripnames = scrips[i].FIELD3;
+                       }
                 /*if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
                     var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
                     if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || inputText.endsWith(scrips[i].FIELD1)))
