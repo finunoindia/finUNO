@@ -61,9 +61,9 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                 }*/
                 var scripwords = inputText.split(" ");
                 for(var k = 0 ; k < scripwords.length ; k++){
-                    if((inputText.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] !== ""){
+                    if((scrips[i].FIELD1.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] !== ""){
                        var j = ((scrips[i].FIELD1).toLowerCase()).search((scripwords[k]).toLowerCase());
-                       if((inputText[j-1] === " " || j === 0) && (inputText[j + (scripwords[k]).length] === " " || inputText.endsWith(scripwords[k])))
+                       //if((inputText[j-1] === " " || j === 0) && (inputText[j + (scripwords[k]).length] === " " || inputText.endsWith(scripwords[k])))
                        scripnames = scrips[i].FIELD3;
                        }
                 }
