@@ -139,7 +139,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                         name : "trade_dialog_params_exchange",
                         lifespan : 0
                     }],
-                    scripnames = "infy";
+                
                     followupEvent : {
                         data : {
                             transactionType : transactionType,
