@@ -106,7 +106,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                         lifespan : 0  
                         },
                         {
-                        name : "trade_dialog_params_scripnames1",
+                        name : "trade_dialog_params_scripnames",
                         lifespan : 0    
                         },
                         {
