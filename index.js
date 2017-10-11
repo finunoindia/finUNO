@@ -38,7 +38,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             inputText = inputText.replace(exchange.toUpperCase() , "");
             inputText = inputText.replace(priceType.toUpperCase() , "");
             inputText = inputText.replace(productType.toUpperCase() , "");
-            inputText = inputText.replace(quantity.toUpperCase() , "");
+            inputText = inputText.replace(quantity , "");
             inputText = inputText.replace(shares.toUpperCase() , "");
             inputText = inputText.replace(validity.toUpperCase() , "");
             inputText = inputText.replace("TRADE" , "");
