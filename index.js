@@ -42,10 +42,10 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             inputText = inputText.replace(shares.toUpperCase() , "");
             inputText = inputText.replace(validity.toUpperCase() , "");
             inputText = inputText.replace("TRADE" , "");
-            inputText = inputText.replace(" ", ""); // added by Anji
-            inputText = inputText.toLowerCase(); // added by Anji
+            // inputText = inputText.replace(" ", ""); // added by Anji
+            // inputText = inputText.toLowerCase(); // added by Anji
             
-            /*
+            
             for(var i=0 ; i < scrips.length ; i++){                        //checking for validity of scrip name
                 if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
                     var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
@@ -63,8 +63,9 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     scripnames = scrips[i].FIELD3;
                 }   
             } 
-            */
             
+            
+            /* Anji
             for(var i=0 ; i < scrips.length ; i++){                        //checking for validity of scrip name
                 var j = (((scrips[i].FIELD1).toLowerCase()).search(inputText));
                 if(j !== -1) {
@@ -93,7 +94,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     scripnames = scrips[i].FIELD3;
                     break;
                 }  
-            } 
+            } */
             
             
             
