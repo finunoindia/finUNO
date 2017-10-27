@@ -72,7 +72,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                         scripnames = scrips[i].FIELD3;
                         break;
                     }
-                    else if ((scrips[i].FIELD1[j-1] === " ") && (scrips[i].FIELD1[j+inputText.length] === " "))
+                    else if ((scrips[i].FIELD1[j-1] === " ") && (scrips[i].FIELD1[j+inputText.length] === " ")) {
                         scripnames = scrips[i].FIELD3;
                         break;
                     }
