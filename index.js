@@ -68,7 +68,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             for(var i=0 ; i < scrips.length ; i++){                        //checking for validity of scrip name
                 var j = (((scrips[i].FIELD1).toLowerCase()).search(inputText));
                 if(j != -1) {
-                    if(((j === 0) && (scrips[i].FIELD1[j+1] === " ")) ||
+                    if(((j === 0) && (scrips[i].FIELD1[j+inputText.length+1] === " ")) ||
                        ((scrips[i].FIELD1[j-1] === " ") && (scrips[i].FIELD1[j+inputText.length+1] === " ")) ||
                        ((scrips[i].FIELD1[j-1] === " ") && (scrips[i].FIELD1).endswith(inputText)))
                     scripnames = scrips[i].FIELD3;
