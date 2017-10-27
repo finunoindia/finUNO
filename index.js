@@ -80,7 +80,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     scripnames = scrips[i].FIELD3;
                     break;
                 }
-                j = (((scrips[i].FIELD3).toLowerCase()). search(inputText));
+                j = (((scrips[i].FIELD3).toLowerCase()).search(inputText));
                 if(j !== -1){
                     scripnames = scrips[i].FIELD3;
                     break;
