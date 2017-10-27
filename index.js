@@ -42,7 +42,9 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             inputText = inputText.replace(shares.toUpperCase() , "");
             inputText = inputText.replace(validity.toUpperCase() , "");
             inputText = inputText.replace("TRADE" , "");
+            inputText = inputText.replace(" ", "");
             
+            /*
             for(var i=0 ; i < scrips.length ; i++){                        //checking for validity of scrip name
                 if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
                     var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
@@ -59,7 +61,31 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                         if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD3).length] === " " || inputText.endsWith(scrips[i].FIELD3)))
                     scripnames = scrips[i].FIELD3;
                 }   
-            }
+            } 
+            */
+            
+            for(var i=0 ; i < scrips.length ; i++){                        //checking for validity of scrip name
+                if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
+                    var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
+                    if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || inputText.endsWith(scrips[i].FIELD1)))
+                    scripnames = scrips[i].FIELD3;
+                    break;
+                }
+                if((inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1){
+                        var j = (inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase());
+                        if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD2).length] === " " || inputText.endsWith(scrips[i].FIELD2)))
+                    scripnames = scrips[i].FIELD3;
+                    break;
+                } 
+                if((inputText.toLowerCase()).search((scrips[i].FIELD3).toLowerCase()) !== -1){
+                        var j = (inputText.toLowerCase()).search((scrips[i].FIELD3).toLowerCase());
+                        if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD3).length] === " " || inputText.endsWith(scrips[i].FIELD3)))
+                    scripnames = scrips[i].FIELD3;
+                    break;
+                }   
+            } 
+            
+            
             
             if(exchange === "" || transactionType === "" || quantity === "")            //checks if all reqquired fields have been filled yet
                 return res.json({
