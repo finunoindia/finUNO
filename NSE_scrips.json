@@ -1,7 +1,7 @@
 [
  {
-   "FIELD2": "20 Microns Limited",
-   "FIELD1": "20MICRONS",
+   "FIELD1": "20 Microns Limited",
+   "FIELD2": "20MICRONS",
    "FIELD3": "20MICRONS-EQ",
    "FIELD4": "NSE"
  },
@@ -60,8 +60,8 @@
    "FIELD4": "NSE"
  },
  {
-   "FIELD1": "ABB India Limited",
-   "FIELD2": "ABB",
+   "FIELD2": "ABB India Limited",
+   "FIELD1": "ABB",
    "FIELD3": "ABB-EQ",
    "FIELD4": "NSE"
  },
