@@ -64,7 +64,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     scripnames = scrips[i].FIELD3;
                 }   
             } 
-            
+            console.log(scripnames);
             
             /* Anji
             for(var i=0 ; i < scrips.length ; i++){                        //checking for validity of scrip name
