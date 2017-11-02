@@ -44,7 +44,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             inputText = inputText.replace("TRADE" , "");
             // inputText = inputText.replace(" ", ""); // added by Anji
             // inputText = inputText.toLowerCase(); // added by Anji
-            
+            if(!(inputText.endsWith(" ")))
+                inputText = inputText.concat(" ");
             
            
             for(var i=0 ; i < scrips.length ; i++){                        //checking for validity of scrip name
