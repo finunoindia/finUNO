@@ -52,7 +52,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                 if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
                     console.log("Entered if 1");
                     var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
-                    if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || (inputText.toLowerCase).endsWith((scrips[i].FIELD1.toLowerCase)))){
+                    if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || (inputText.toLowerCase()).endsWith((scrips[i].FIELD1.toLowerCase())))){
                     console.log("ENtered if 2");  
                     console.log(j);
                     console.log("#"+scrips[i].FIELD1+"#");  
