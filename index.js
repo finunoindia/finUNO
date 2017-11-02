@@ -49,9 +49,10 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
            
             for(var i=0 ; i < scrips.length ; i++){                        //checking for validity of scrip name
                 if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
-                    console.log("Entered if");
+                    console.log("Entered if 1");
                     var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
                     if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || inputText.endsWith(scrips[i].FIELD1))){
+                    console.log("ENtered if 2");    
                     scripnames = scrips[i].FIELD3;
                     console.log(scripnames);
                     }
