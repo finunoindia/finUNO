@@ -42,7 +42,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             inputText = inputText.replace(shares.toUpperCase() , "");
             inputText = inputText.replace(validity.toUpperCase() , "");
             inputText = inputText.replace("TRADE" , "");
-            if(inputText[inputText.length - 1] !== " ") inputText.concat(" ");
+            //if(inputText[inputText.length - 1] !== " ") inputText.concat(" ");
             // inputText = inputText.replace(" ", ""); // added by Anji
             // inputText = inputText.toLowerCase(); // added by Anji
             
