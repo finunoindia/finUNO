@@ -74,8 +74,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                        scriplist2.push(scrips[i].FIELD3);
                        }
                     }
-                    if(scriplist1.length === 1)
-                        break;
+                    //if(scriplist1.length === 1)
+                    //   break;
                 }
               }
             }  
