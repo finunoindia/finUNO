@@ -47,22 +47,57 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             // inputText = inputText.toLowerCase(); // added by Anji
             
             
-            for(var i=0 ; i < scrips.length ; i++){                        //checking for validity of scrip name
-                if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
-                    var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
-                    if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || (inputText.toLowerCase()).endsWith((scrips[i].FIELD1.toLowerCase()))))  
-                    scripnames = scrips[i].FIELD3;
-                }
+            var scriplist1 = [];
+            var scriplist2 = [];
+            for(var i=0 ; i < scrips.length ; i++){                   // Checks for scrip validity 
                 if((inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase());
-                        if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD2).length] === " " || inputText.endsWith(scrips[i].FIELD2)))
-                    scripnames = scrips[i].FIELD3;
-                } 
-                if((inputText.toLowerCase()).search((scrips[i].FIELD3).toLowerCase()) !== -1){
-                        var j = (inputText.toLowerCase()).search((scrips[i].FIELD3).toLowerCase());
-                        if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD3).length] === " " || inputText.endsWith(scrips[i].FIELD3)))
-                    scripnames = scrips[i].FIELD3;
-                }   
+                        if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD2).length] === " " || (inputText.toLowerCase()).endsWith(scrips[i].FIELD2))){
+                    scriplist1.push(scrips[i].FIELD1);
+                    scriplist2.push(scrips[i].FIELD3);
+                        }
+                }
+                else if((inputText.toLowerCase()).search((scrips[i].FIELD3).toLowerCase()) !== -1){
+                    var j = (inputText.toLowerCase()).search((scrips[i].FIELD3).toLowerCase());
+                    if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD3).length] === " " || inputText.endsWith(scrips[i].FIELD3))){
+                    scriplist1.push(scrips[i].FIELD1);
+                    scriplist2.push(scrips[i].FIELD3);
+                    }
+                }
+              else{
+                    var scripwords = inputText.split(" ");
+                for(var k = 0 ; k < scripwords.length ; k++){
+                    if((scrips[i].FIELD1.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] !== ""){
+                       var j = ((scrips[i].FIELD1).toLowerCase()).search((scripwords[k]).toLowerCase());
+                       if((scrips[i].FIELD1[j-1] === " " || j === 0) && ((scrips[i].FIELD1)[j + (scripwords[k]).length] === " " || (scrips[i].FIELD1).endsWith(scripwords[k]))){
+                       scriplist1.push(scrips[i].FIELD1);
+                       scriplist2.push(scrips[i].FIELD3);
+                       }
+                    }
+                    if(scriplist1.length === 1)
+                        break;
+                }
+              }
+            }  
+            if(scriplist1.length === 1)
+                scripnames = scriplist2[0];
+            else if(scriplist1.length > 1){
+                var scripstring = "The string you have entered matches the following scrips :";
+                for(i=0 ; i < scriplist1.length ; i++){
+                    scripstring = scripstring.concat(", ");
+                    scripstring = scripstring.concat(scriplist1[i]);
+                }
+                scripstring = scripstring.concat(". Please Choose one");
+                return res.json({
+                    contextOut : [{
+                        name : "tradecontextout",
+                        parameters : {
+                            scripnames : scripnames
+                        }
+                    }],
+                    speech : scripstring,
+                    displayText : scripstring
+                });
             }
             
             /* Anji
