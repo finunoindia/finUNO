@@ -32,7 +32,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             var scripnames = req.body.result.parameters.scripnames;
             var exchange_possibilities = "The stock you have chosen is not available on ";
             exchange_possibilities = exchange_possibilities.concat(exchange);
-            exchange_possibilities = exchange_possibilities.concat(". Please choose from the following :");
+            exchange_possibilities = exchange_possibilities.concat(". Please type one of the following :");
             inputText = inputText.toUpperCase();
             inputText = inputText.replace(transactionType.toUpperCase() , "");
             inputText = inputText.replace(exchange.toUpperCase() , "");
@@ -84,10 +84,10 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             else if(scriplist1.length > 1){
                 var scripstring = "The string you have entered matches the following scrips :";
                 for(i=0 ; i < scriplist1.length ; i++){
-                    scripstring = scripstring.concat(", ");
+                    scripstring = scripstring.concat("\n");
                     scripstring = scripstring.concat(scriplist1[i]);
                 }
-                scripstring = scripstring.concat(". Please Choose one");
+                scripstring = scripstring.concat(". Please type in one");
                 return res.json({
                     contextOut : [{
                         name : "tradecontextout",
