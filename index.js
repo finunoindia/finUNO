@@ -84,7 +84,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             else if(scriplist1.length > 1){
                 var scripstring = "The string you have entered matches the following scrips :";
                 for(i=0 ; i < scriplist1.length ; i++){
-                    scripstring = scripstring.concat(os.EOL);
+                    scripstring = scripstring.concat("\n");
                     scripstring = scripstring.concat(scriplist1[i]);
                 }
                 scripstring = scripstring.concat(". Please type in one");
