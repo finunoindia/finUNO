@@ -1,10 +1,10 @@
 'use strict';
-//const async = require("async");
+/*const async = require("async");
 require("require.async")(require);
 
-require.async("./package.json", function(info) {
+require.async("./package.json", function() {
     console.log("async working!!");
-})
+})*/
 const express = require('express');                                // Used to access express
 const bodyParser = require('body-parser');                         // Ussed too access the body-parser
 
@@ -19,7 +19,7 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.post('/finUNO', function(req, res) {                    // Uses post() to get data fro appi.ai in json format
-    var scrips = require("./NSE_scrips.json");                        // gets data from the scrip list
+    var scrips = require.async("./NSE_scrips.json");                        // gets data from the scrip list
     var inputText= req.body.result.resolvedQuery;
     var action = req.body.result.action;                            // reads action field from json to use in swicth case 
     
