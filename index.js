@@ -50,9 +50,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             
             var scriplist1 = [];
             var scriplist2 = [];
-            var flag=0;
-            for(var i=0 ; i < scrips.length ; i++){                   // Checks for scrip validity 
-              for(var i=0 ; i < scrips.length ; i++){
+            var flag=0; 
+            for(var i=0 ; i< scrips.length ; i++){
                 if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
                         console.log("IF1 entered : "); 
@@ -63,10 +62,11 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     flag=1;
                         }
                 }
-              }
+            }
+            for(var i=0 ; i < scrips.length ; i++){                   // Checks for scrip validity 
                 if(flag===1)
                     break;
-                else if((inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1){
+                if((inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase());
                         if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD2).length] === " " || (inputText.toLowerCase()).endsWith((scrips[i].FIELD2).toLowerCase()))){
                     scriplist1.push(scrips[i].FIELD1);
