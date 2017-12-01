@@ -81,6 +81,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     }
                 }
               else{
+                  inputText = inputText.replace("OF", "");          // Identify and Remove other stockwords
                     var scripwords = inputText.split(" ");
                 for(var k = 0 ; k < scripwords.length ; k++){
                     if((scrips[i].FIELD1.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] !== ""){
@@ -580,16 +581,24 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     scripnames = scrips[i].FIELD3;
                 }
        */
-            var scriplist1 = [];
+             var scriplist1 = [];
             var scriplist2 = [];
-            for(var i=0 ; i < scrips.length ; i++){                   // Checks for scrip validity 
-             /*    if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
+            var flag=0; 
+            for(var i=0 ; i< scrips.length ; i++){
+                if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
+                        console.log("IF1 entered : "); 
                         if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || (inputText.toLowerCase()).endsWith((scrips[i].FIELD1).toLowerCase()))){
+                            console.log("IF2 entered : "); 
                     scriplist1.push(scrips[i].FIELD1);
                     scriplist2.push(scrips[i].FIELD3);
+                    flag=1;
                         }
-                }*/
+                }
+            }
+            for(var i=0 ; i < scrips.length ; i++){                   // Checks for scrip validity 
+                if(flag===1)
+                    break;
                 if((inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase());
                         if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD2).length] === " " || (inputText.toLowerCase()).endsWith((scrips[i].FIELD2).toLowerCase()))){
@@ -605,6 +614,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     }
                 }
               else{
+                  inputText = inputText.replace("OF", "");          // Identify and Remove other stockwords
                     var scripwords = inputText.split(" ");
                 for(var k = 0 ; k < scripwords.length ; k++){
                     if((scrips[i].FIELD1.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] !== ""){
