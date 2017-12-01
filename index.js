@@ -1,5 +1,5 @@
 'use strict';
-var async = require("async");
+async = require("async");
 const express = require('express');                                // Used to access express
 const bodyParser = require('body-parser');                         // Ussed too access the body-parser
 
