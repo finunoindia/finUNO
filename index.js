@@ -565,6 +565,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     scripnames = scrips[i].FIELD3;
                 }
        */
+            var scriplist1 = [];
+            var scriplist2 = [];
             for(var i=0 ; i < scrips.length ; i++){                   // Checks for scrip validity 
                 if((inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase());
