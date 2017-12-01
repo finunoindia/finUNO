@@ -617,7 +617,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     displayText : scripstring
                 });
             }
-            }  
+       
             if(exchange === "")
                 return res.json({
                     contextOut : [{
