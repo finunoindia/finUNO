@@ -860,3 +860,4 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
 restService.listen((process.env.PORT || 8000), function() {
      console.log("Server up and listening");
      });
+server.timeout = 20000;
