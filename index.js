@@ -225,6 +225,40 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             }
             break;
             
+        case "resetAction" : // Reset intent
+            var contextOut = req.body.result.contexts;
+            for(var i=0;i<contextOut.length;i++)
+                contextOut[i].lifespan=0;
+            return res.json({                                                     // returns final output by calling followupEvent 
+                  contextOut : contextOut,
+                /*    contextOut : [{
+                        name : "trade_dialog_context",
+                        lifespan : 0
+                        },
+                        {
+                        name : "a044aca4-554d-4acb-a8cf-ce1ac6c1f625_id_dialog_context",
+                        lifespan : 0  
+                        },
+                        {
+                        name : "trade_dialog_params_scripnames",
+                        lifespan : 0    
+                        },
+                        {
+                        name : "tradecontextout",
+                        lifespan : 0    
+                        },
+                        {
+                        name : "trade_dialog_params_exchange",
+                        lifespan : 0
+                    }],
+                */
+                    followupEvent : {
+                        name : "resetEvent"
+                    }
+                });
+            break;
+            
+            
         case "holdings_scrip_specific" : // holdings scrip specific intent--------------------------------------------
             
             var scripnames = req.body.result.parameters.scripnames;
