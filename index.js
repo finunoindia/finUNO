@@ -1,5 +1,5 @@
 'use strict';
-
+require("require.async")(require);
 const express = require('express');                                // Used to access express
 const bodyParser = require('body-parser');                         // Ussed too access the body-parser
 
@@ -860,4 +860,4 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
 restService.listen((process.env.PORT || 8000), function() {
      console.log("Server up and listening");
      });
-server.timeout = 1000;
+//server.timeout = 1000;
