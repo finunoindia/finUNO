@@ -1,5 +1,10 @@
 'use strict';
-const async = require("async");
+//const async = require("async");
+require("require.async")(require);
+
+require.async("./package.json", function(info) {
+    console.log("async working!!");
+})
 const express = require('express');                                // Used to access express
 const bodyParser = require('body-parser');                         // Ussed too access the body-parser
 
