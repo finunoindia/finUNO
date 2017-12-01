@@ -1,6 +1,7 @@
 'use strict';
-/*const async = require("async");
 require("require.async")(require);
+//const async = require("async");
+/*require("require.async")(require);
 
 require.async("./package.json", function() {
     console.log("async working!!");
