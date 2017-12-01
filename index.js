@@ -56,6 +56,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                         if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || (inputText.toLowerCase()).endsWith((scrips[i].FIELD1).toLowerCase()))){
                     scriplist1.push(scrips[i].FIELD1);
                     scriplist2.push(scrips[i].FIELD3);
+                            break;
                         }
                 }
                 if((inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1){
