@@ -229,6 +229,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             var contextOut = req.body.result.contexts;
             for(var i=0;i<contextOut.length;i++)
                 contextOut[i].lifespan=0;
+            console.log(contextOut);
             return res.json({                                                     // returns final output by calling followupEvent 
                   contextOut : contextOut,
                 /*    contextOut : [{
