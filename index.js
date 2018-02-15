@@ -23,6 +23,9 @@ restService.use(bodyParser.json());
 
 restService.post('/finUNO', function(req, res) {                    // Uses post() to get data fro appi.ai in json format
     var scrips;
+    fs.readFile("./NSE_scrips.json",callback);                        // gets data from the scrip list
+    var inputText= req.body.result.resolvedQuery;
+    var action = req.body.result.action;                            // reads action field from json to use in swicth case 
     function callback(err,data){
         if (err){
             console.log(err);
@@ -31,11 +34,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
         scrips = JSON.parse(data);
         console.log("Callback Started");
         console.log(scrips[0]);
-    } 
-    fs.readFile("./NSE_scrips.json",callback);                        // gets data from the scrip list
-    var inputText= req.body.result.resolvedQuery;
-    var action = req.body.result.action;                            // reads action field from json to use in swicth case 
-    
+        
     switch(action) {
             
         case "tradeAction" : //trade intent------------------------------------------------
@@ -873,6 +872,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             break;
 
     }//switch case end
+        console.log("Callback ended!!");
+    }
 });//post() method end
  
 restService.listen((process.env.PORT || 8000), function() {
