@@ -29,6 +29,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             return;
         }
         scrips = data;
+        console.log("Callback Started");
+        console.log(scrips[0]);
     } 
     fs.readFile("./NSE_scrips.json",callback);                        // gets data from the scrip list
     var inputText= req.body.result.resolvedQuery;
