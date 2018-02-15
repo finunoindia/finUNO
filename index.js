@@ -20,6 +20,7 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.post('/finUNO', function(req, res) {                    // Uses post() to get data fro appi.ai in json format
+    var fs = require('fs');
     var scrips;
     function callback(err,data){
         if (err){
@@ -28,7 +29,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
         }
         scrips = data;
     } 
-    require('fs').readFile("./NSE_scrips.json",callback);                        // gets data from the scrip list
+    fs.readFile("./NSE_scrips.json",callback);                        // gets data from the scrip list
     var inputText= req.body.result.resolvedQuery;
     var action = req.body.result.action;                            // reads action field from json to use in swicth case 
     
