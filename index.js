@@ -34,7 +34,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
         scrips = JSON.parse(data);
         console.log("Callback Started");
         console.log(scrips[0]);
-        res.json({
+        return res.json({
         followupEvent : {
                         data : {
                             transactionType : transactionType,
