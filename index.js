@@ -29,7 +29,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
     var inputText= req.body.result.resolvedQuery;
     var action = req.body.result.action;                            // reads action field from json to use in swicth case 
     var id = req.body.sessionId;
-    fs.readFile("./NSE_scrips.json",function callback(err,data){
+    fs.readFile("./BSE_scrips.json",function callback(err,data){
         if (err){
             console.log(err);
             return;
