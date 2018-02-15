@@ -66,7 +66,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
 });
        */ 
         
-        res.json({
+        return res.json({
         followupEvent : {
                         data : {
                             transactionType : "random",
