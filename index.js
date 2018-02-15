@@ -66,7 +66,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
 });
        */ 
         
-        return res.json({
+        res.json({
         followupEvent : {
                         data : {
                             transactionType : "random",
@@ -888,7 +888,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
         console.log("Callback ended!!");
     });
     console.log("This should print at the beginning");
-    res.json({
+    return res.json({
     speech: "Processing..."
   });
 });//post() method end
