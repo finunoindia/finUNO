@@ -37,7 +37,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
         scrips = JSON.parse(data);
         console.log("Callback Started");
         console.log(scrips[0]);
-        
+/*       
         
         request({
                  url: "https://api.api.ai/api/query?v=20150910",
@@ -64,9 +64,9 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
 }, function (error, response, body){
     console.log(response);
 });
+       */ 
         
-        
-     /*   return res.json({
+        res.json({
         followupEvent : {
                         data : {
                             transactionType : "random",
@@ -80,7 +80,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                         },
                         name : "trade_slot_fill"
                     }
-        });   */
+        });
         
     switch(action) {
             
