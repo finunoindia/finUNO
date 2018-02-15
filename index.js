@@ -11,6 +11,8 @@ const bodyParser = require('body-parser');                         // Ussed too 
 
 const restService = express();
 
+const fs = reuire('fs');
+
 restService.use(bodyParser.urlencoded({                           
     extended: true
 }));
@@ -20,7 +22,6 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.post('/finUNO', function(req, res) {                    // Uses post() to get data fro appi.ai in json format
-    var fs = require('fs');
     var scrips;
     function callback(err,data){
         if (err){
