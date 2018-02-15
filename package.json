@@ -12,5 +12,9 @@
     "express": "^4.13.4",
     "async": "latest",
     "graceful-fs": "^4.1.11"
-  }
+  },
+  "keywords": [
+    "fs",
+    "readFile"
+  ]
 }
