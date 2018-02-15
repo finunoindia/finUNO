@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');                         // Ussed too 
 
 const restService = express();
 
-const fs = reuire('fs');
+const fs = require('fs');
 
 restService.use(bodyParser.urlencoded({                           
     extended: true
