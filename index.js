@@ -875,6 +875,9 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
         console.log("Callback ended!!");
     });
     console.log("This should print at the beginning");
+    res.json({
+    speech: "Processing..."
+  });
 });//post() method end
  
 restService.listen((process.env.PORT || 8000), function() {
