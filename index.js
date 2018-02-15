@@ -26,6 +26,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
     //fs.readFile("./NSE_scrips.json",callback);                        // gets data from the scrip list
     var inputText= req.body.result.resolvedQuery;
     var action = req.body.result.action;                            // reads action field from json to use in swicth case 
+    var id = req.body.id;
     fs.readFile("./NSE_scrips.json",function callback(err,data){
         if (err){
             console.log(err);
@@ -34,21 +35,50 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
         scrips = JSON.parse(data);
         console.log("Callback Started");
         console.log(scrips[0]);
-        return res.json({
+        
+        
+        request({
+                 url: "https://api.api.ai/api/query?v=20150910",
+                 method: "POST",
+                 json: true,   // <--Very important!!!
+                 body: {
+        "event": {
+            "name": "trade_slot_fill",
+            "data": {
+                transactionType : "random",
+                exchange : "random",
+                quantity : "random",
+                scripnames : "random",
+                priceType : "random",
+                productType : "random",
+                validity : "random",
+                shares : "random"
+            }
+        },
+       // "timezone": "America/New_York",
+        "lang": "en",
+        "sessionId": id
+    }
+}, function (error, response, body){
+    console.log(response);
+});
+        
+        
+     /*   return res.json({
         followupEvent : {
                         data : {
-                            transactionType : transactionType,
-                            exchange : exchange,
-                            quantity : quantity,
-                            scripnames : scripnames,
-                            priceType : priceType,
-                            productType : productType,
-                            validity : validity,
-                            shares : shares
+                            transactionType : "random",
+                            exchange : "random",
+                            quantity : "random",
+                            scripnames : "random",
+                            priceType : "random",
+                            productType : "random",
+                            validity : "random",
+                            shares : "random"
                         },
                         name : "trade_slot_fill"
                     }
-        });
+        });   */
         
     switch(action) {
             
