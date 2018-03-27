@@ -86,7 +86,6 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     }
                 }
               else{
-                  inputText = inputText.replace("OF", "");          // Identify and Remove other stockwords
                   /*var scripwords = inputText.split(" ");
                 for(var k = 0 ; k < scripwords.length ; k++){
                     if((scrips[i].FIELD1.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] !== ""){
