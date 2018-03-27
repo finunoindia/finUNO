@@ -109,6 +109,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                          count++;
                      }
                  }
+                 console.log("count = %d",count); 
                  if(count>max)
                      max = count;
                   
