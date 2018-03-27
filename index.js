@@ -116,7 +116,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
               }
             }  
             
-            
+            console.log("max = %d",max);
             if(scriplist1.length === 0 && max != 0){
                 for(var i = 0 ; i < scrips.length ; i++){
                     count = 0;
@@ -127,7 +127,6 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                             count = count + scripwords[j].length;
                         }
                     }
-                    console.log("max = %d",max);
                     if(max === count){
                         scriplist1.push(scrips[i].FIELD1);
                         scriplist2.push(scrips[i].FIELD3);
