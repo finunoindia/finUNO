@@ -101,8 +101,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                 }*/
                   
                  count = 0;
-                 scrips[i].FIELD1 = (scrips[i].FIELD1).replace("\.", "\.");
-                 scrips[i].FIELD1 = (scrips[i].FIELD1).replace("\*", "\*");
+                 scrips[i].FIELD1 = (scrips[i].FIELD1).replace("\.", "\\.");
+                 scrips[i].FIELD1 = (scrips[i].FIELD1).replace("\*", "\\*");
                  var scripwords = scrips[i].FIELD1.toLowerCase().split(" ");
                  for(var k = 0 ; k < scripwords.length ; k++){
                      if((inputText.toLowerCase()).search((scripwords[k])) !== -1 && scripwords[k] !== ""){
