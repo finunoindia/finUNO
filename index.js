@@ -119,9 +119,9 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             
             if(scriplist1.length === 0){
                 for(var i = 0 ; i < scrips.length ; i++){
-                    scripwords = scrips[i].FIELD1.toLowerCase().split(" ");
+                    var scripwords = scrips[i].FIELD1.toLowerCase().split(" ");
                     for(var j = 0 ; j < scripwords.length ; j++){
-                        if((inputText.toLowerCase()).search((scripwords[k])) !== -1 && scripwords[k] !== ""){
+                        if((inputText.toLowerCase()).search((scripwords[j])) !== -1 && scripwords[j] !== ""){
                             count++;
                         }
                     }
