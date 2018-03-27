@@ -109,7 +109,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                          count++;
                      }
                  }
-                 console.log("count = %d",count); 
+                 //console.log("count = %d",count); 
                  if(count>max)
                      max = count;
                   
@@ -122,9 +122,11 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     var scripwords = scrips[i].FIELD1.toLowerCase().split(" ");
                     for(var j = 0 ; j < scripwords.length ; j++){
                         if((inputText.toLowerCase()).search((scripwords[j])) !== -1 && scripwords[j] !== ""){
+                            console.log("Word = %s",scripwords[j]);
                             count++;
                         }
                     }
+                    console.log("max = %d",max);
                     if(max === count){
                         scriplist1.push(scrips[i].FIELD1);
                         scriplist2.push(scrips[i].FIELD3);
