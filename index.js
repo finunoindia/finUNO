@@ -53,25 +53,24 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             // inputText = inputText.replace(" ", ""); // added by Anji
             // inputText = inputText.toLowerCase(); // added by Anji
             
-            
+            var max = 0;
+            var count = 0;
             var scriplist1 = [];
             var scriplist2 = [];
             var flag=0; 
-            for(var i=0 ; i< scrips.length ; i++){
+           /* for(var i=0 ; i< scrips.length ; i++){
                 if((inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].FIELD1).toLowerCase());
-                        console.log("IF1 entered : "); 
-                        if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || (inputText.toLowerCase()).endsWith((scrips[i].FIELD1).toLowerCase()))){
-                            console.log("IF2 entered : "); 
+                        if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD1).length] === " " || (inputText.toLowerCase()).endsWith((scrips[i].FIELD1).toLowerCase()))){ 
                     scriplist1.push(scrips[i].FIELD1);
                     scriplist2.push(scrips[i].FIELD3);
                     flag=1;
                         }
                 }
-            }
+            }*/
             for(var i=0 ; i < scrips.length ; i++){                   // Checks for scrip validity 
-                if(flag===1)
-                    break;
+                //if(flag===1)
+                //    break;
                 if((inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].FIELD2).toLowerCase());
                         if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].FIELD2).length] === " " || (inputText.toLowerCase()).endsWith((scrips[i].FIELD2).toLowerCase()))){
@@ -87,8 +86,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     }
                 }
               else{
-                  inputText = inputText.replace("OF", "");          // Identify and Remove other stockwords
-                    var scripwords = inputText.split(" ");
+                  /*var scripwords = inputText.split(" ");
                 for(var k = 0 ; k < scripwords.length ; k++){
                     if((scrips[i].FIELD1.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] !== ""){
                        var j = ((scrips[i].FIELD1).toLowerCase()).search((scripwords[k]).toLowerCase());
@@ -99,9 +97,46 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     }
                     //if(scriplist1.length === 1)
                     //   break;
-                }
+                }*/
+                  
+                 count = 0;
+                 scrips[i].FIELD1 = (scrips[i].FIELD1).replace(/\./g, "\\.");
+                 scrips[i].FIELD1 = (scrips[i].FIELD1).replace(/\*/g, "\\*");
+                 var scripwords = scrips[i].FIELD1.toLowerCase().split(" ");
+                 for(var k = 0 ; k < scripwords.length ; k++){
+                     if((inputText.toLowerCase()).search((scripwords[k])) !== -1 && scripwords[k] !== ""){
+                         count = count + scripwords[k].length;
+                     }
+                 }
+                 //console.log("count = %d",count); 
+                 if(count>max)
+                     max = count;
+                  
               }
             }  
+            
+            console.log("max = %d",max);
+            if(scriplist1.length === 0 && max != 0){
+                for(var i = 0 ; i < scrips.length ; i++){
+                    count = 0;
+                    var scripwords = scrips[i].FIELD1.toLowerCase().split(" ");
+                    for(var j = 0 ; j < scripwords.length ; j++){
+                        if((inputText.toLowerCase()).search((scripwords[j])) !== -1 && scripwords[j] !== ""){
+                            var k = (inputText.toLowerCase()).search(scripwords[j]);
+                            if(((inputText[k-1] != "." && inputText[k-1] === " ") || k === 0) && ((inputText[k + (scripwords[j]).length] === " " && inputText[k + (scripwords[j]).length] != ".")|| (inputText.toLowerCase()).endsWith(scripwords[j]))){
+                            console.log("Word = %s  ///////   %s ///// %d",scripwords[j],scrips[i].FIELD1, k);
+                            count = count + scripwords[j].length;
+                            }
+                        }
+                    }
+                    if(max === count){
+                        scriplist1.push(scrips[i].FIELD1);
+                        scriplist2.push(scrips[i].FIELD3);
+                    }
+                }
+            }
+            
+            
             if(scriplist1.length === 1)
                 scripnames = scriplist2[0];
             else if(scriplist1.length > 1){
