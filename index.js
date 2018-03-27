@@ -53,7 +53,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             // inputText = inputText.replace(" ", ""); // added by Anji
             // inputText = inputText.toLowerCase(); // added by Anji
             
-            
+            var max = 0;
+            var count = 0;
             var scriplist1 = [];
             var scriplist2 = [];
             var flag=0; 
@@ -88,7 +89,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                 }
               else{
                   inputText = inputText.replace("OF", "");          // Identify and Remove other stockwords
-                    var scripwords = inputText.split(" ");
+                  /*var scripwords = inputText.split(" ");
                 for(var k = 0 ; k < scripwords.length ; k++){
                     if((scrips[i].FIELD1.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] !== ""){
                        var j = ((scrips[i].FIELD1).toLowerCase()).search((scripwords[k]).toLowerCase());
@@ -99,9 +100,38 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     }
                     //if(scriplist1.length === 1)
                     //   break;
-                }
+                }*/
+                  
+                 count = 0; 
+                 var scripwords = scrips[i].FIELD1.toLowerCase().split(" ");
+                 for(var k = 0 ; k < scripwords.length ; k++){
+                     if((inputText.toLowerCase()).search((scripwords[k])) !== -1 && scripwords[k] !== ""){
+                         count++;
+                     }
+                 }
+                 if(count>max)
+                     max = count;
+                  
               }
             }  
+            
+            
+            if(scriplist1.length === 0){
+                for(var i = 0 ; i < scrips.length ; i++){
+                    scripwords = scrips[i].FIELD1.toLowerCase().split(" ");
+                    for(var j = 0 ; j < scripwords.length ; j++){
+                        if((inputText.toLowerCase()).search((scripwords[k])) !== -1 && scripwords[k] !== ""){
+                            count++;
+                        }
+                    }
+                    if(max === count){
+                        scriplist1.push(scrips[i].FIELD1);
+                        scriplist2.push(scrips[i].FIELD3);
+                    }
+                }
+            }
+            
+            
             if(scriplist1.length === 1)
                 scripnames = scriplist2[0];
             else if(scriplist1.length > 1){
