@@ -15,6 +15,8 @@ const fs = require('fs');
 
 const request = require('request');
 
+const pg = require('pg');
+
 restService.use(bodyParser.urlencoded({                           
     extended: true
 }));
