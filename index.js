@@ -45,6 +45,8 @@ await client.end()
       done();
       //if(err) return console.error(err);
       console.log(result.rows[0]);
+       
+       res.json(
    });
 });   
     
