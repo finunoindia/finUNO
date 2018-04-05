@@ -46,7 +46,16 @@ await client.end()
       //if(err) return console.error(err);
       console.log(result.rows[0]);
        
-       res.json(
+       return res.json({
+                    contextOut : [{
+                        name : "tradecontextout",
+                        parameters : {
+                            scripnames : "DB Test"
+                        }
+                    }],
+                    speech : "DB Test",
+                    displayText : "DB Test"
+                });
    });
 });   
     
