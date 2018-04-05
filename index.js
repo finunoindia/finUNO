@@ -51,6 +51,10 @@ client.query('SELECT * FROM mytable', (err, res) => {
   client.end()
 })
     
+    client.query('SELECT * FROM Equity', (err, res) => {
+  console.log(res)
+  client.end()
+})
     
 /*
 await client.connect()
