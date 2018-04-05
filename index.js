@@ -40,10 +40,11 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
     
     client.connect()
 
-client.query('SELECT * FROM Equity', (err, res) => {
+/*client.query('SELECT * FROM Equity', (err, res) => {
   console.log(res)
   client.end()
 })
+    */
     
 client.query('SELECT * FROM mytable', (err, res) => {
   console.log(res)
