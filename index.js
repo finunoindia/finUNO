@@ -28,7 +28,24 @@ restService.use(bodyParser.json());
 restService.post('/finUNO', function(req, res) {                      // Uses post() to get data from api.ai in json format
      
     const { Client } = require('pg')
-    const client = new Client()
+    const client = new Client({
+        user: 'zefakwazdlcsvl',
+        host: 'ec2-54-221-207-184.compute-1.amazonaws.com',
+        database: 'd8uvjfn9ba627d',
+        password: '0eab1c16cd07430aeb4d3960e5d1268f951f1be9c76c7a2e3ad4ac517b094055',
+        port: 5432
+    })
+    
+    
+    
+    client.connect()
+
+client.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  client.end()
+})
+    
+    
 /*
 await client.connect()
 
@@ -39,12 +56,14 @@ const res = client.query('SELECT NOW() as now')
 console.log(res) // Hello world!
 await client.end()
  */ 
+    
+    /*
  var connectionString = "postgres://zefakwazdlcsvl:0eab1c16cd07430aeb4d3960e5d1268f951f1be9c76c7a2e3ad4ac517b094055@ec2-54-221-207-184.compute-1.amazonaws.com:5432/d8uvjfn9ba627d"
  client.connect(connectionString, function(client, done) {
    client.query('SELECT NOW()', (err, res) => {
         console.log(err, res);
         pool.end();
-   });
+   });*/
       //if(err) return console.error(err);
       //console.log(result.rows[0]);
        
