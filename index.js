@@ -41,10 +41,12 @@ await client.end()
  */ 
  var connectionString = "postgres://zefakwazdlcsvl:0eab1c16cd07430aeb4d3960e5d1268f951f1be9c76c7a2e3ad4ac517b094055@ec2-54-221-207-184.compute-1.amazonaws.com:5432/d8uvjfn9ba627d"
  client.connect(connectionString, function(client, done) {
-   client.query('SELECT * FROM your_table', function(result) {
-      done();
+   client.query('SELECT NOW()', (err, res) => {
+        console.log(err, res);
+        pool.end();
+   });
       //if(err) return console.error(err);
-      console.log(result.rows[0]);
+      //console.log(result.rows[0]);
        
        return res.json({
                     contextOut : [{
@@ -59,7 +61,6 @@ await client.end()
    });
 });   
     
-});
     restService.listen((process.env.PORT || 8000), function() {
      console.log("Server up and listening");
      });
