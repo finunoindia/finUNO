@@ -15,7 +15,7 @@ const fs = require('fs');
 
 const request = require('request');
 
-const pg = require('pg');
+//const pg = require('pg');
 
 restService.use(bodyParser.urlencoded({                           
     extended: true
@@ -40,7 +40,7 @@ console.log(res) // Hello world!
 await client.end()
  */ 
  var connectionString = "postgres://zefakwazdlcsvl:0eab1c16cd07430aeb4d3960e5d1268f951f1be9c76c7a2e3ad4ac517b094055@ec2-54-221-207-184.compute-1.amazonaws.com:5432/d8uvjfn9ba627d"
- pg.connect(connectionString, function(err, client, done) {
+ client.connect(connectionString, function(err, client, done) {
    client.query('SELECT * FROM your_table', function(err, result) {
       done();
       if(err) return console.error(err);
