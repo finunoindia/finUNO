@@ -39,7 +39,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
 
     client.query('SELECT * FROM Equity', (err, res) => {
         console.log(res)
-        scrips = JSON.stringify(res);
+        scrips = res;
         client.end()
 })
     var inputText= req.body.result.resolvedQuery;
