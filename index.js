@@ -42,7 +42,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
         scrips = JSON.stringify(res1);
         scrips = JSON.parse(scrips);
         scrips = scrips.rows;
-        console.log(scrips[0]);
+        console.log(scrips[2000]);
         console.log(scrips.length);
 
     var inputText= req.body.result.resolvedQuery;
