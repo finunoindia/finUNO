@@ -80,21 +80,9 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             var max = 0;
             var count = 0;
             var scriplist1 = [];
-            var scriplist2 = [];
-            var flag = 0; 
-           /* for(var i=0 ; i< scrips.length ; i++){
-                if((inputText.toLowerCase()).search((scrips[i].field1).toLowerCase()) !== -1){
-                        var j = (inputText.toLowerCase()).search((scrips[i].field1).toLowerCase());
-                        if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].field1).length] === " " || (inputText.toLowerCase()).endsWith((scrips[i].field1).toLowerCase()))){ 
-                    scriplist1.push(scrips[i].field1);
-                    scriplist2.push(scrips[i].field3);
-                    flag=1;
-                        }
-                }
-            }*/
+            var scriplist2 = []; 
+           
             for(var i=0 ; i < scrips.length ; i++){                   // Checks for scrip validity 
-                //if(flag===1)
-                //    break;
                 if((inputText.toLowerCase()).search((scrips[i].field2).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].field2).toLowerCase());
                         if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].field2).length] === " " || (inputText.toLowerCase()).endsWith((scrips[i].field2).toLowerCase()))){
@@ -109,19 +97,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     scriplist2.push(scrips[i].field3);
                     }
                 }
+                
               else{
-                  /*var scripwords = inputText.split(" ");
-                for(var k = 0 ; k < scripwords.length ; k++){
-                    if((scrips[i].field1.toLowerCase()).search((scripwords[k]).toLowerCase()) !== -1 && scripwords[k] !== ""){
-                       var j = ((scrips[i].field1).toLowerCase()).search((scripwords[k]).toLowerCase());
-                       if((scrips[i].field1[j-1] === " " || j === 0) && ((scrips[i].field1)[j + (scripwords[k]).length] === " " || ((scrips[i].field1).toLowerCase()).endsWith((scripwords[k]).toLowerCase()))){
-                       scriplist1.push(scrips[i].field1);
-                       scriplist2.push(scrips[i].field3);
-                       }
-                    }
-                    //if(scriplist1.length === 1)
-                    //   break;
-                }*/
                   
                  var len = 0; 
                  count = 0;
