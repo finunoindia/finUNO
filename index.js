@@ -85,6 +85,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             var scriplist2 = []; 
            
             for(var i=0 ; i < scrips.length ; i++){                   // Checks for scrip validity 
+                console.log(scrips[i].field3);
                 if((inputText.toLowerCase()).search((scrips[i].field2).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].field2).toLowerCase());
                         if((inputText[j-1] === " " || j === 0) && (inputText[j + (scrips[i].field2).length] === " " || (inputText.toLowerCase()).endsWith((scrips[i].field2).toLowerCase()))){
@@ -104,8 +105,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                   
                  var len = 0; 
                  count = 0;
-                 //scrips[i].field1 = (scrips[i].field1).replace(/\./g, "\\.");
-                 //scrips[i].field1 = (scrips[i].field1).replace(/\*/g, "\\*");
+                 scrips[i].field1 = (scrips[i].field1).replace(/\./g, "\\.");
+                 scrips[i].field1 = (scrips[i].field1).replace(/\*/g, "\\*");
                  var scripwords = scrips[i].field1.toLowerCase().split(" ");
                  for(var k = 0 ; k < scripwords.length ; k++){
                      console.log(scrips[i].FIELD3);
