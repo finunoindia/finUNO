@@ -21,8 +21,8 @@ restService.use(bodyParser.json());
 
 restService.post('/finUNO', function(req, res) {                    // Uses post() to get data fro appi.ai in json format
     //var scrips = require("./NSE_scrips.json");                        // gets data from the scrip list
-    
     var scrips = {};
+    
     const { Client } = require('pg')
     const client = new Client({
         user: 'pxcslocnxfinsb',
@@ -42,6 +42,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
         scrips = JSON.stringify(res);
         scrips = JSON.parse(scrips);
         scrips = scrips.rows;
+        console.log(scrips[0]);
+        console.log(scrips.length);
         client.end()
 })
     var inputText= req.body.result.resolvedQuery;
