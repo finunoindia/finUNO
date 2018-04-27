@@ -20,7 +20,27 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.post('/finUNO', function(req, res) {                    // Uses post() to get data fro appi.ai in json format
-    var scrips = require("./NSE_scrips.json");                        // gets data from the scrip list
+    //var scrips = require("./NSE_scrips.json");                        // gets data from the scrip list
+    
+    const { Client } = require('pg')
+    const client = new Client({
+        user: 'zefakwazdlcsvl',
+        host: 'ec2-54-221-207-184.compute-1.amazonaws.com',
+        database: 'd8uvjfn9ba627d',
+        password: '0eab1c16cd07430aeb4d3960e5d1268f951f1be9c76c7a2e3ad4ac517b094055',
+        port: 5432
+    })
+    
+    
+    
+    client.connect()
+
+
+    client.query('SELECT * FROM Equity', (err, scrips) => {
+        console.log(scrips)
+        client.end()
+})
+    
     var inputText= req.body.result.resolvedQuery;
     var action = req.body.result.action;                            // reads action field from json to use in swicth case 
     
