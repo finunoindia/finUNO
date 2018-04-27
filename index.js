@@ -42,7 +42,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
         scrips = JSON.stringify(res1);
         scrips = JSON.parse(scrips);
         scrips = scrips.rows;
-        console.log(scrips[2000].field3);
+        console.log(scrips[0]);
+        console.log(scrips[2000]);
         console.log((scrips[2000].field3 === '511577')?"true":"false");
         console.log(scrips.length);
 
