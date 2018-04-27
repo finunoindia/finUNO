@@ -44,11 +44,6 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
         scrips = scrips.rows;
         console.log(scrips[0]);
         console.log(scrips.length);
-        client.end()
-})
-    
-    console.log(scrips[0]);
-    console.log(scrips.length);
 
     var inputText= req.body.result.resolvedQuery;
     var action = req.body.result.action;                            // reads action field from json to use in swicth case 
@@ -891,6 +886,10 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             break;
 
     }//switch case end
+        
+  client.end()
+ })
+    
 });//post() method end
  
 restService.listen((process.env.PORT || 8000), function() {
