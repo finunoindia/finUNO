@@ -123,6 +123,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     //   break;
                 }*/
                   
+                 var len = 0; 
                  count = 0;
                  scrips[i].field1 = (scrips[i].field1).replace(/\./g, "\\.");
                  scrips[i].field1 = (scrips[i].field1).replace(/\*/g, "\\*");
@@ -130,14 +131,10 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                  for(var k = 0 ; k < scripwords.length ; k++){
                      if((inputText.toLowerCase()).search((scripwords[k])) !== -1 && scripwords[k] !== ""){
                          count = count + scripwords[k].length;
-                         if(count === (scrips[i].field1).length)
-                             count = count + 100;
                      }
-                 }
-                 //console.log("count = %d",count); 
+                 } 
                  if(count>max){
                      max = count;
-                     console.log("max = %d  //////  %s", max, scrips[i].field1);
                  }
                   
               }
@@ -146,8 +143,10 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             if(scriplist1.length === 0 && max != 0){
                 for(var i = 0 ; i < scrips.length ; i++){
                     count = 0;
+                    len = 0;
                     var scripwords = scrips[i].field1.toLowerCase().split(" ");
                     for(var j = 0 ; j < scripwords.length ; j++){
+                        len = len + scripwords[j].length;
                         if((inputText.toLowerCase()).search((scripwords[j])) !== -1 && scripwords[j] !== ""){
                             var k = (inputText.toLowerCase()).search(scripwords[j]);
                             if(((inputText[k-1] != "." && inputText[k-1] === " ") || k === 0) && ((inputText[k + (scripwords[j]).length] === " " && inputText[k + (scripwords[j]).length] != ".")|| (inputText.toLowerCase()).endsWith(scripwords[j]))){
@@ -158,6 +157,13 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                     if(max === count){
                         scriplist1.push(scrips[i].field1);
                         scriplist2.push(scrips[i].field3);
+                    }
+                    if(max === count && count === len){
+                        scriplist1 = [];
+                        scriplist2 = [];
+                        scriplist1.push(scrips[i].field1);
+                        scriplist2.push(scrips[i].field3);
+                        max = 100;
                     }
                 }
             }
