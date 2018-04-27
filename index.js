@@ -44,7 +44,8 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
  client.query('SELECT * FROM Equity', (err, res) => {
      scrips = JSON.stringify(res);
      scrips = JSON.parse(scrips);
-     console.log(scrips.rows.field1);
+     scrips = scrips.rows;
+     console.log(scrips[0].field1);
      client.end()
 })
     
