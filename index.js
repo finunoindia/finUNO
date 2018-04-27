@@ -109,7 +109,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                  scrips[i].field1 = (scrips[i].field1).replace(/\*/g, "\\*");
                  var scripwords = scrips[i].field1.toLowerCase().split(" ");
                  for(var k = 0 ; k < scripwords.length ; k++){
-                     console.log(scrips[i].FIELD3);
+                     //console.log(scrips[i].FIELD3);
                      if((inputText.toLowerCase()).search(scripwords[k]) !== -1 && scripwords[k] !== ""){
                          count = count + scripwords[k].length;
                      }
