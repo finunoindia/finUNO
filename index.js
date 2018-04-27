@@ -45,7 +45,7 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
      scrips = JSON.stringify(res);
      scrips = JSON.parse(scrips);
      scrips = scrips.rows;
-     console.log(scrips[0].field1);
+     console.log(scrips[0].FIELD1);
      client.end()
 })
     
