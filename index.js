@@ -37,9 +37,9 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
     client.connect()
 
 
-    client.query('SELECT * FROM Equity', (err, res) => {
+    client.query('SELECT * FROM Equity', (err, res1) => {
 
-        scrips = JSON.stringify(res);
+        scrips = JSON.stringify(res1);
         scrips = JSON.parse(scrips);
         scrips = scrips.rows;
         console.log(scrips[0]);
