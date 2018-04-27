@@ -29,10 +29,10 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
      
     const { Client } = require('pg')
     const client = new Client({
-        user: 'zefakwazdlcsvl',
-        host: 'ec2-54-221-207-184.compute-1.amazonaws.com',
-        database: 'd8uvjfn9ba627d',
-        password: '0eab1c16cd07430aeb4d3960e5d1268f951f1be9c76c7a2e3ad4ac517b094055',
+        user: 'pxcslocnxfinsb',
+        host: 'ec2-54-243-63-13.compute-1.amazonaws.com',
+        database: 'daie0h3kmaiqve',
+        password: 'b407c9d48f3702a3e57f7900dd8e7a601f8f9fda4f6db1254994adf90a163ea8',
         port: 5432
     })
     
@@ -42,8 +42,8 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
     client.connect()
 
  client.query('SELECT * FROM Equity', (err, res) => {
-     scrips = res;
-     console.log(scrips);
+     scrips = JSON.stringify(res);
+     console.log(scrips[0]);
      client.end()
 })
     
