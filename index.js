@@ -84,7 +84,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             var scriplist1 = [];
             var scriplist2 = []; 
            
-            for(var i=0 ; i < scrips.length ; i++){                   // Checks for scrip validity 
+            for(var i=0 ; i < 1600/*scrips.length*/ ; i++){                   // Checks for scrip validity 
                 console.log(scrips[i].field3);
                 if((inputText.toLowerCase()).search((scrips[i].field2).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].field2).toLowerCase());
