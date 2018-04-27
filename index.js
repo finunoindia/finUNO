@@ -81,7 +81,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             var count = 0;
             var scriplist1 = [];
             var scriplist2 = [];
-            var flag=0; 
+            var flag = 0; 
            /* for(var i=0 ; i< scrips.length ; i++){
                 if((inputText.toLowerCase()).search((scrips[i].field1).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].field1).toLowerCase());
@@ -135,13 +135,14 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                      }
                  }
                  //console.log("count = %d",count); 
-                 if(count>max)
+                 if(count>max){
                      max = count;
+                     console.log("max = %d  //////  %s", max, scrips[i].field1);
+                 }
                   
               }
             }  
             
-            console.log("max = %d",max);
             if(scriplist1.length === 0 && max != 0){
                 for(var i = 0 ; i < scrips.length ; i++){
                     count = 0;
@@ -150,7 +151,6 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                         if((inputText.toLowerCase()).search((scripwords[j])) !== -1 && scripwords[j] !== ""){
                             var k = (inputText.toLowerCase()).search(scripwords[j]);
                             if(((inputText[k-1] != "." && inputText[k-1] === " ") || k === 0) && ((inputText[k + (scripwords[j]).length] === " " && inputText[k + (scripwords[j]).length] != ".")|| (inputText.toLowerCase()).endsWith(scripwords[j]))){
-                            console.log("Word = %s  ///////   %s ///// %d",scripwords[j],scrips[i].field1, k);
                             count = count + scripwords[j].length;
                             }
                         }
