@@ -41,7 +41,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
         console.log(scrips)
         client.end()
 })
-    
+    scrips = JSON.stringify(scrips);
     var inputText= req.body.result.resolvedQuery;
     var action = req.body.result.action;                            // reads action field from json to use in swicth case 
     
