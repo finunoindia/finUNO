@@ -22,7 +22,7 @@ restService.use(bodyParser.json());
 restService.post('/finUNO', function(req, res) {                    // Uses post() to get data fro appi.ai in json format
     //var scrips = require("./NSE_scrips.json");                        // gets data from the scrip list
     
-    var scrips = [][];
+    var scrips;
     const { Client } = require('pg')
     const client = new Client({
         user: 'zefakwazdlcsvl',
@@ -37,11 +37,11 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
     client.connect()
 
 
-    client.query('SELECT * FROM Equity', (err, scrips) => {
-        console.log(scrips)
+    client.query('SELECT * FROM Equity', (err, res) => {
+        console.log(res)
+        scrips = JSON.stringify(res);
         client.end()
 })
-    scrips = JSON.stringify(scrips);
     var inputText= req.body.result.resolvedQuery;
     var action = req.body.result.action;                            // reads action field from json to use in swicth case 
     
