@@ -37,7 +37,7 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
     })
     
     
-    var scrips;
+    var scrips = {};
     
     client.connect()
 
