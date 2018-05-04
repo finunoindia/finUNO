@@ -35,13 +35,13 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
         password: 'b407c9d48f3702a3e57f7900dd8e7a601f8f9fda4f6db1254994adf90a163ea8',
         port: 5432
     })
-    
-    var random = "infosys"
+    // ORDER BY Difference(FIELD1,'"+random+"') DESC
+    //var random = "infosys"
     var scrips = {};
     
     client.connect()
 
- client.query('Select * From Equity WHERE FIELD1='"+random+"' ORDER BY Difference(FIELD1,'"+random+"') DESC', (err, res) => {
+ client.query('Select * From Equity WHERE FIELD1 LIKE "%infosys%"', (err, res) => {
      console.log(res);
      //scrips = JSON.stringify(res);
      //scrips = JSON.parse(scrips);
