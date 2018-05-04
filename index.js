@@ -36,12 +36,14 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
         port: 5432
     })
     
-    var random = "infosys"
+    //var random = "infosys"
     var scrips = {};
     
     client.connect()
 
- client.query('Select * From Equity WHERE FIELD1='"+random+"' ORDER BY Difference(City, '"+random+"') DESC', (err, res) => {
+ client.query('declare @var varchar(20)
+              set @var = "infosys"
+              Select * From Equity WHERE FIELD1=@var ORDER BY Difference(FIELD1,@var) DESC', (err, res) => {
      console.log(res);
      //scrips = JSON.stringify(res);
      //scrips = JSON.parse(scrips);
