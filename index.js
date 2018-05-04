@@ -7,7 +7,7 @@ require.async("./package.json", function() {
     console.log("async working!!");
 })*/
 const express = require('express');                                // Used to access express
-const bodyParser = require('body-parser');                         // Ussed too access the body-parser
+const bodyParser = require('body-parser');                         // Used too access the body-parser
 
 const restService = express();
 
@@ -83,8 +83,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
             var count = 0;
             var scriplist1 = [];
             var scriplist2 = []; 
-           
-            for(var i=0 ; i < 1600/*scrips.length*/ ; i++){                   // Checks for scrip validity 
+           /*
+            for(var i=0 ; i < scrips.length ; i++){                   // Checks for scrip validity 
                 console.log(scrips[i].field3);
                 if((inputText.toLowerCase()).search((scrips[i].field2).toLowerCase()) !== -1){
                         var j = (inputText.toLowerCase()).search((scrips[i].field2).toLowerCase());
@@ -106,7 +106,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                  var len = 0; 
                  count = 0;
                  scrips[i].field1 = (scrips[i].field1).replace(/\./g, "\\.");
-                 scrips[i].field1 = (scrips[i].field1).replace(/\*/g, "\\*");
+                 scrips[i].field1 = (scrips[i].field1).replace(/\*********'/g, "\\*");
                  var scripwords = scrips[i].field1.toLowerCase().split(" ");
                  for(var k = 0 ; k < scripwords.length ; k++){
                      //console.log(scrips[i].FIELD3);
@@ -120,6 +120,19 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                   
               }
             }  
+            */
+            var matches = {}
+            var matches1 = {}
+            var scripwords = inputText.toLowerCase().split(" ");
+            for(var i = 0 ; i < scripwords.length ; i++){
+                 client.query('SELECT field3 FROM Equity WHERE "'+scripwords[i]+'" IN field1 OR "'+scripwords[i]+'" IN field2 OR "'+scripwords[i]+'" IN field3', (err, res1) => {
+                     matches = JSON.stringify(res1);
+                     matches = JSON.parse(matches);
+                     matches = scrips.rows;
+                     client.end()
+                 })
+                matches1.append(matches);
+            }
             
             if(scriplist1.length === 0 && max != 0){
                 for(var i = 0 ; i < scrips.length ; i++){
