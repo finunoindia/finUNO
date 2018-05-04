@@ -41,8 +41,8 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
     
     client.connect()
 
- client.query('Select * From Equity WHERE FIELD1 LIKE \'"+random+"\'', (err, res) => {
-     console.log(res);
+ client.query('Select * From Equity WHERE FIELD1 LIKE \'%"+random+"\'%', (err, res) => {
+     console.log(res.rows);
      //scrips = JSON.stringify(res);
      //scrips = JSON.parse(scrips);
      //scrips = scrips.rows;
