@@ -42,7 +42,8 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
     
     client.connect()
 
- client.query('Select * From Equity', (err, res) => {
+ //client.query('Select * From Equity', (err, res) => {
+ client.query('Select * from Equity',res)
      scrips = JSON.stringify(res);
      scrips = JSON.parse(scrips);
      scrips = scrips.rows;
@@ -52,7 +53,7 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
      //scrips = scrips.rows;
      //console.log(scrips[0].FIELD1);
      client.end()
-})
+//})
     
   console.log(scrips[0]);
        
