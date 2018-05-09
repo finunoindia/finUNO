@@ -46,7 +46,7 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
      scrips = JSON.stringify(res);
      scrips = JSON.parse(scrips);
      scrips = scrips.rows;
-     console.log(scrips);
+     //console.log(scrips);
      //scrips = JSON.stringify(res);
      //scrips = JSON.parse(scrips);
      //scrips = scrips.rows;
@@ -54,26 +54,7 @@ restService.post('/finUNO', function(req, res) {                      // Uses po
      client.end()
 })
     
-/*
-await client.connect()
-
-//const res = await client.query('SELECT NOW() as now', ['Hello world!'])
-const res = client.query('SELECT NOW() as now')
-  .then(res => console.log(res.rows[0]))
-  .catch(e => console.error(e.stack))
-console.log(res) // Hello world!
-await client.end()
- */ 
-    
-    /*
- var connectionString = "postgres://zefakwazdlcsvl:0eab1c16cd07430aeb4d3960e5d1268f951f1be9c76c7a2e3ad4ac517b094055@ec2-54-221-207-184.compute-1.amazonaws.com:5432/d8uvjfn9ba627d"
- client.connect(connectionString, function(client, done) {
-   client.query('SELECT NOW()', (err, res) => {
-        console.log(err, res);
-        pool.end();
-   });*/
-      //if(err) return console.error(err);
-      //console.log(result.rows[0]);
+  console.log(scrips[0]);
        
        return res.json({
                     contextOut : [{
