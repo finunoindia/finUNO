@@ -121,7 +121,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
               }
             }  
             */
-            var matches = []
+            var matches = {}
             var matches1 = []
             var scripwords = inputText.toLowerCase().split(" ");
             for(var i = 0 ; i < scripwords.length ; i++){
