@@ -129,6 +129,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                      matches = JSON.stringify(res1);
                      matches = JSON.parse(matches);
                      matches = scrips.rows;
+                     console.log(matches);
                      client.end()
                  })
                 matches1.append(matches);
