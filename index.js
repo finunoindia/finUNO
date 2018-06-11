@@ -121,8 +121,8 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
               }
             }  
             */
-            var matches = {}
-            var matches1 = {}
+            var matches = []
+            var matches1 = []
             var scripwords = inputText.toLowerCase().split(" ");
             for(var i = 0 ; i < scripwords.length ; i++){
                  client.query('SELECT field3 FROM Equity WHERE "'+scripwords[i]+'" IN field1 OR "'+scripwords[i]+'" IN field2 OR "'+scripwords[i]+'" IN field3', (err, res1) => {
@@ -132,7 +132,7 @@ restService.post('/finUNO', function(req, res) {                    // Uses post
                      console.log(matches);
                      client.end()
                  })
-                matches1.append(matches);
+                matches1.push(matches);
             }
             
             if(scriplist1.length === 0 && max != 0){
